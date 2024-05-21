@@ -325,13 +325,10 @@ function App() {
           user={user}
         />
       </div>
-      <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full w-full rounded-md max-sm:px-[12px]">
-        <form
-          className="w-full max-w-xl mx-auto pt-6 max-sm:[16px] max-sm:w-[50%] "
-          onSubmit={addExpenseData}
-        >
-          <div className="flex flex-wrap -mx-4 mb-4  max-sm:mb-1">
-            <div className="w-full md:w-1/2 px-4 mb-4 max-sm:w-[80%] max-sm:px-2 max-sm:mb-2">
+      <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen w-full rounded-md px-4 py-6 sm:px-6 md:px-8 lg:px-16">
+        <form className="mx-auto max-w-xl" onSubmit={addExpenseData}>
+          <div className="mb-4 flex flex-wrap -mx-2">
+            <div className="w-full px-2 mb-4 sm:w-1/2 sm:mb-0">
               <label htmlFor="title" className="block font-bold mb-2">
                 Title
               </label>
@@ -345,7 +342,7 @@ function App() {
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
               />
             </div>
-            <div className="w-full md:w-1/2 px-4 mb-4 max-sm:w-[80%] max-sm:px-2 max-sm:mb-2">
+            <div className="w-full px-2 mb-4 sm:w-1/2 sm:mb-0">
               <label htmlFor="amount" className="block font-bold mb-2">
                 Amount
               </label>
@@ -361,7 +358,7 @@ function App() {
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
               />
             </div>
-            <div className="w-full md:w-1/2 px-4 mb-4 max-sm:w-[80%] max-sm:px-2 max-sm:mb-2">
+            <div className="w-full px-2 mb-4 sm:w-1/2 sm:mb-0">
               <label htmlFor="date" className="block font-bold mb-2">
                 Date
               </label>
@@ -377,38 +374,38 @@ function App() {
               />
             </div>
           </div>
-          <button
-            onClick={resetField}
-            className="px-4 py-2 border rounded-md bg-blue-500 text-white hover:bg-blue-600 mr-3 max-sm:px-2 max-sm:py-1 max-sm:mr-2 focus:outline-none focus:border-none max-sm:font-semibold max-sm:text-[16px]"
-          >
-            Reset
-          </button>
-          <button
-            type="submit"
-            className="px-4 py-2 border rounded-md bg-blue-500 text-white hover:bg-blue-600 max-sm:px-2 max-sm:py-1 max-sm:mr-2 max-sm:font-semibold max-sm:text-[16px] focus:outline-none focus:border-none"
-          >
-            Add Expense
-          </button>
+          <div className="flex justify-between">
+            <button
+              onClick={resetField}
+              className="px-4 py-2 border rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:border-none font-semibold text-sm sm:text-base"
+            >
+              Reset
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 border rounded-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:border-none font-semibold text-sm sm:text-base"
+            >
+              Add Expense
+            </button>
+          </div>
         </form>
 
         {user && (
           <>
-            <div className="mt-16 text-white text-2xl m-6 rounded-md max-sm:mt-10 max-sm:text-[12px] max-sm:m-3 max-sm:flex max-sm:flex-col ">
+            <div className="mt-10 text-white text-sm sm:text-base">
               {expenseList.map((expe) => (
                 <div
                   key={expe.id}
-                  className="items-center justify-between flex p-4 h-[90px] px-4 m-2 bg-indigo-800 rounded-md max-sm:p-2 max-sm:h-[60px] max-sm:px-2 max-sm:py-4"
+                  className="flex justify-between items-center p-2 m-2 bg-indigo-800 rounded-md sm:p-4 sm:h-20"
                 >
-                  <h2 className="border-white border-1 rounded-md py-[6px] px-4 bg-indigo-900 text-center max-sm:py[2px] max-sm:px-2 max-sm:text-[12px] max-sm:border-[1px] max-sm:font-semibold max-sm:border-none">
+                  <h2 className="border-1 rounded-md py-1 px-2 bg-indigo-900 text-center font-semibold sm:py-2 sm:px-4">
                     {expe.title}
                   </h2>
-                  <p className="border-white border p-1 rounded-sm max-sm:p-[2px] max-sm:text-[14px] max-sm:font-semibold max-sm:border-none">
+                  <p className="p-1 rounded-sm font-semibold sm:p-2">
                     {expe.date}
                   </p>
-                  <div className="flex items-center gap-4 px-8 max-sm:gap-1 max-sm:px-4">
-                    <h4 className="font-semibold max-sm:text-[12px] max-sm:border-none">
-                      ${expe.amount}
-                    </h4>
+                  <div className="flex items-center gap-2 sm:gap-4 sm:px-4">
+                    <h4 className="font-semibold">${expe.amount}</h4>
                     <button
                       onClick={() => deleteExpense(expe.id)}
                       className="text-white rounded-md border-white border p-1 bg-transparent hover:text-red-600 hover:border-red-600"
@@ -419,7 +416,7 @@ function App() {
                 </div>
               ))}
             </div>
-            <h3 className="text-[24px] font-semibold text-right text-white ml-auto mr-[28px] max-sm:text-center max-sm:pb-2 max-sm:text-[16px]">
+            <h3 className="text-right text-white text-lg font-semibold ml-auto mr-4 sm:text-xl sm:mr-8">
               Total: 💵${totalAmount}
             </h3>
           </>
